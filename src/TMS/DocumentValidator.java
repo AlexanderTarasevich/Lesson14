@@ -1,4 +1,4 @@
-package TMS.TaskStar;
+package TMS;
 
 import java.io.*;
 import java.util.Scanner;
