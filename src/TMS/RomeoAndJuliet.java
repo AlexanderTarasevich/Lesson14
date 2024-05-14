@@ -5,23 +5,23 @@ import java.util.Scanner;
 
 public class RomeoAndJuliet {
     public static void main(String[] args) {
-        String longestWord = "";
+        String longestWord = null;
         String shortestWord = null;
         try {
-            Scanner scanner = new Scanner(new File("C:\\romeo-and-juliet.txt"));
-            scanner.useDelimiter("[^a-zA-Z]+");
+            Scanner fileScanner = new Scanner(new File("C:\\romeo-and-juliet.txt"));
+            fileScanner.useDelimiter("[^a-zA-Z]+");
 
-            while (scanner.hasNext()) {
-                String word = scanner.next();
-                if (word.length() > longestWord.length()) {
+            while (fileScanner.hasNext()) {
+                String word = fileScanner.next();
+                if (longestWord == null || word.length() > longestWord.length() ) {
                     longestWord = word;
 
                 }
-                if (shortestWord == null || (word.length() < shortestWord.length() && word.length() > 1)) {
+                if (shortestWord == null || (word.length() < shortestWord.length() && word.length() >= 2)) {
                     shortestWord = word;
                 }
             }
-            scanner.close();
+            fileScanner.close();
             FileWriter writer = new FileWriter("found words.txt");
             writer.write("Самое длинное слово: " + longestWord + "\n");
             writer.write("Самое короткое слово: " + shortestWord + "\n");
